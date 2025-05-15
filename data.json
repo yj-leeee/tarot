@@ -1,0 +1,14 @@
+{
+    "list" : [
+        {
+            "title" :"나의 재물운",
+            "desc":"나는 얼마나 많은 돈을 평생에 벌 수 있을까? 올해보다 내년은 더 많이 벌 수 있을까? 궁금했던 재물운을 살펴봅니다.",
+            "image":"https://firebasestorage.googleapis.com/v0/b/glenntarotapp.appspot.com/o/banner%2Fmoney_tarot.png?alt=media&token=adc5e157-2056-4609-af43-42580b173bd2&_gl=1*1k3f1xx*_ga*ODMyNzMxNjIxLjE2NjY0NzkwMDE.*_ga_CW55HF8NVT*MTY5NzM3OTUwNS4zMy4xLjE2OTczNzk1OTkuMzAuMC4w"
+        },
+        {
+            "title" :"나의 연애운",
+            "desc":"올해 나는 연애 할 수 있을지! 지금 만나고 있는 연인과 앞으로의 미래는 어떨지! 너무 궁금합니다. 점을 같이 보아요",
+            "image":"https://firebasestorage.googleapis.com/v0/b/glenntarotapp.appspot.com/o/banner%2Flove_tarot.png?alt=media&token=2a34e64c-ca21-41e2-b271-0fcdfa3fcb88&_gl=1*p0tcsu*_ga*ODMyNzMxNjIxLjE2NjY0NzkwMDE.*_ga_CW55HF8NVT*MTY5NzM4MTY2MC4zNC4xLjE2OTczODE2NzEuNDkuMC4w"
+        }
+    ]
+}

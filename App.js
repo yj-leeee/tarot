@@ -1,16 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView, ImageBackground, Dimensions} from 'react-native';
+import data from './data.json';
 
-const main_title = '유진이의 타로 하우스'; 
-const main_tarot_image = 'https://firebasestorage.googleapis.com/v0/b/glenntarotapp.appspot.com/o/banner%2Fmain_tarot.png?alt=media&token=f2f5a65a-14e2-4624-a564-c5c7dc5f2f5d&_gl=1*174kdyp*_ga*ODMyNzMxNjIxLjE2NjY0NzkwMDE.*_ga_CW55HF8NVT*MTY5NzM3OTUwNS4zMy4xLjE2OTczNzk1NjkuNjAuMC4w'
-const money_tarot_image = 'https://firebasestorage.googleapis.com/v0/b/glenntarotapp.appspot.com/o/banner%2Fmoney_tarot.png?alt=media&token=adc5e157-2056-4609-af43-42580b173bd2&_gl=1*1k3f1xx*_ga*ODMyNzMxNjIxLjE2NjY0NzkwMDE.*_ga_CW55HF8NVT*MTY5NzM3OTUwNS4zMy4xLjE2OTczNzk1OTkuMzAuMC4w'
-const love_tarot_image = 'https://firebasestorage.googleapis.com/v0/b/glenntarotapp.appspot.com/o/banner%2Flove_tarot.png?alt=media&token=2a34e64c-ca21-41e2-b271-0fcdfa3fcb88&_gl=1*p0tcsu*_ga*ODMyNzMxNjIxLjE2NjY0NzkwMDE.*_ga_CW55HF8NVT*MTY5NzM4MTY2MC4zNC4xLjE2OTczODE2NzEuNDkuMC4w'
+
+const main_title = 'Glenn의 타로 하우스'; 
 const background_image = 'https://firebasestorage.googleapis.com/v0/b/glenntarotapp.appspot.com/o/background%2Fbackground02.png?alt=media&token=8a90848c-488a-4f0c-88d2-1d1a2c27ad04&_gl=1*1aqtxz4*_ga*ODMyNzMxNjIxLjE2NjY0NzkwMDE.*_ga_CW55HF8NVT*MTY5NzM4MTY2MC4zNC4xLjE2OTczODM3NDQuNDkuMC4w';
+const main_tarot_image = 'https://firebasestorage.googleapis.com/v0/b/glenntarotapp.appspot.com/o/banner%2Fmain_tarot.png?alt=media&token=f2f5a65a-14e2-4624-a564-c5c7dc5f2f5d&_gl=1*174kdyp*_ga*ODMyNzMxNjIxLjE2NjY0NzkwMDE.*_ga_CW55HF8NVT*MTY5NzM3OTUwNS4zMy4xLjE2OTczNzk1NjkuNjAuMC4w'
 
-const money_tarot_title = '나의 재물운';
-const money_tarot_desc = '나는 얼마나 많은 돈을 평생에 벌 수 있을까? 올해보다 내년은 더 많이 벌 수 있을까? 궁금했던 재물운을 살펴봅니다.';
-const love_tarot_title = '나의 연애운';
-const love_tarot_desc = '올해 나는 연애 할 수 있을지! 지금 만나고 있는 연인과 앞으로의 미래는 어떨지! 너무 궁금합니다. 점을 같이 보아요';
 const continue_text = '건강운도 곧 준비중입니다 🚧'
 
 export default function App() {
@@ -35,23 +31,23 @@ export default function App() {
         <Image style={styles.mainImage} source={{uri:main_tarot_image}}/>
         <View style={styles.cardContainer}>
 
-          {/* 하나의 카드 영역을 나타내는 View */}
-          <TouchableOpacity style={styles.card} onPress={somethingDoFunction}>
-            <Image style={styles.cardImage} source={{uri:money_tarot_image}}/>
-            <View style={styles.cardText}>
-              <Text style={styles.cardTitle}>{money_tarot_title}</Text>
-              <Text style={styles.cardDesc} numberOfLines={3}>{money_tarot_desc}</Text>
-            </View>
-          </TouchableOpacity>
 
-          {/* 하나의 카드 영역을 나타내는 View */}
-          <TouchableOpacity style={styles.card} onPress={somethingDoFunction}>
-            <Image style={styles.cardImage} source={{uri:love_tarot_image}}/>
-            <View style={styles.cardText}>
-              <Text style={styles.cardTitle}>{love_tarot_title}</Text>
-              <Text style={styles.cardDesc} numberOfLines={3}>{love_tarot_desc}</Text>
-            </View>
-          </TouchableOpacity>
+          {data.list.map((d,i) => {
+
+            //data.json의 list 배열에서 하나씩 꺼내와 카드를 완성
+            //최상단 묶어지는 엘리먼트(태그)엔 항상 key 속성을 두고 유니크한 값을 줘야 함
+            //컴퓨터가 각각이 다른 내용의 카드임을 알기 위한 기준값이 됨
+            return (
+              <TouchableOpacity key={i} style={styles.card} onPress={somethingDoFunction}>
+                <Image style={styles.cardImage} source={{uri:d.image}}/>
+                <View style={styles.cardText}>
+                  <Text style={styles.cardTitle}>{d.title}</Text>
+                  <Text style={styles.cardDesc} numberOfLines={3}>{d.desc}</Text>
+                </View>
+              </TouchableOpacity>
+            )
+          })}
+        
 
           <View style={styles.card_later}>
             <Text>{continue_text}</Text>
